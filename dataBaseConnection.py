@@ -6,7 +6,7 @@ class DBConnection:
         self.collection = self.database['users']
 
     def insert(self, email, usrname, passw):
-        self.collection.insert_one({"email":email, "name":usrname,"password":passw})
+        self.collection.insert_one({"email":email, "username":usrname,"password":passw})
         print("Successful")
         return
     
@@ -17,3 +17,9 @@ class DBConnection:
             return 2
         else :
             return 0
+    
+    def Authenticate(self, usr, passw) -> bool:
+        if self.collection.count_documents({"username":usr, "password":passw}) == 1:
+            return True
+        else:
+            return False

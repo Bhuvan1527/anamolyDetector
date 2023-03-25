@@ -11,7 +11,11 @@ root.title("Network Anomaly Detector")
 obj = DBConnection()
 #global loginFrame, registerFrame 
 #global registerFrame 
-
+# mainframe = ttk.Frame(root, padding="3 3 12 12")
+# loginFrame = ttk.Frame(root, padding="3 3 12 12")
+# registerFrame = ttk.Frame(root, padding="3 3 12 12")
+# emailErr = ttk.Label(registerFrame, text="Account with the same email already exists.", foreground="red")
+# userErr = ttk.Label(registerFrame, text="Account with the same user name already exists.", foreground="red")
 
 def home():
     mainframe = ttk.Frame(root, padding="3 3 12 12")
@@ -39,11 +43,11 @@ def Login(status):
     
     return
 
-def rSubmit(email, usr, passw,rf):
+def rSubmit(email, usr, passw, rf):
     emailErr = ttk.Label(rf, text="Account with the same email already exists.", foreground="red")
     userErr = ttk.Label(rf, text="Account with the same user name already exists.", foreground="red")
-    emailErr.forget()
-    userErr.forget()
+    userErr.grid_forget()
+    emailErr.grid_forget()
     if(obj.isThere(email, usr) == 0):
         obj.insert(email, usr, passw)
         Login(2)
@@ -55,9 +59,6 @@ def rSubmit(email, usr, passw,rf):
 
 def Register():
     registerFrame = ttk.Frame(root, padding="3 3 12 12")
-    registerFrame.grid(column=0, row=0, sticky=(N, W, E, S))
-    root.columnconfigure(0, weight=1)
-    root.rowconfigure(0, weight=1)
     registerFrame.grid(column=0, row=0, sticky=(N, W, E, S))
     root.columnconfigure(0, weight=1)
     root.rowconfigure(0, weight=1)
