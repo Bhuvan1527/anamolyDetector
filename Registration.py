@@ -22,7 +22,7 @@ class Home:
         self.RegisterBtn.grid(row=0, column=3, sticky=E)
 
 def isEmailCorrect(str) -> bool:
-    x = re.search("^[a-zA-Z0-9]+@(gmail.com|uohyd.ac.in)$", str)
+    x = re.search("^[a-zA-Z0-9]+@(gmail\.com|uohyd\.ac\.in)$", str)
     if x is None:
         return False
     else:
@@ -63,6 +63,7 @@ class LoginFrame:
         else:
             self.loginErr = ttk.Label(self.frame, text="Incorrect Username or Password", padding=10, foreground="red")
             self.loginErr.grid(row=1, column=1, columnspan=3)
+        
         return
     
     def display(self) -> None:
