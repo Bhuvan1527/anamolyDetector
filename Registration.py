@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import ttk
 from dataBaseConnection import DBConnection
 import re
+from detector import application
 
 class Home:
     def __init__(self, root) -> None:
@@ -59,7 +60,8 @@ class LoginFrame:
             self.loginErr.grid(row=1, column=1, columnspan=3)
         stat = self.db.Authenticate(un, pa)
         if stat:
-            pass
+            self.rootWindow.destroy()
+            application(un)
         else:
             self.loginErr = ttk.Label(self.frame, text="Incorrect Username or Password", padding=10, foreground="red")
             self.loginErr.grid(row=1, column=1, columnspan=3)
