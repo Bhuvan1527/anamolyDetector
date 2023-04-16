@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import ttk
 from Registration import RegisterFrame
 from Registration import Home
+from detector import start
 root = Tk()
 root.geometry("400x400")
 root.minsize(400, 400)
@@ -15,5 +16,6 @@ hm = Home(root)
 # Button(root, text="Home", command=hm.display).grid(row=0, column=1)
 
 hm.display()
-
+print("Finished")
 root.mainloop()
+# start("Shanks")

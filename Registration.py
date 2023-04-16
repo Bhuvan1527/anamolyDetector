@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter import ttk
 from dataBaseConnection import DBConnection
 import re
-from detector import application
+from detector import start
 
 class Home:
     def __init__(self, root) -> None:
@@ -46,7 +46,7 @@ class LoginFrame:
         root.columnconfigure(0, weight=1)
         root.rowconfigure(0, weight=1)
         self.username = ttk.Entry(self.frame, justify="left", width=30)
-        self.password = ttk.Entry(self.frame, justify="left", width=30)
+        self.password = ttk.Entry(self.frame, justify="left", width=30, show="*")
         self.loginErr = ttk.Label(self.frame, text="Incorrect Username or Password", padding=10, foreground="red")
         self.rootWindow = root
         self.db = DBConnection()
@@ -61,7 +61,7 @@ class LoginFrame:
         stat = self.db.Authenticate(un, pa)
         if stat:
             self.rootWindow.destroy()
-            application(un)
+            start(un)
         else:
             self.loginErr = ttk.Label(self.frame, text="Incorrect Username or Password", padding=10, foreground="red")
             self.loginErr.grid(row=1, column=1, columnspan=3)
@@ -130,7 +130,7 @@ class RegisterFrame:
         self.username = ttk.Entry(self.frame, width=30)
         self.username.grid(row=4, column=1)
         ttk.Label(self.frame, text="Password:", padding=10).grid(row=6, column=0)
-        self.password = ttk.Entry(self.frame, width=30)
+        self.password = ttk.Entry(self.frame, width=30, show="*")
         self.password.grid(row=6, column=1)
         ttk.Button(self.frame, text="Home", command=lambda: Home(self.rootWindow).display()).grid(row=8, column=0)
         ttk.Button(self.frame, text="Submit", command=lambda : self.rSubmit(self.email.get(), self.username.get(), self.password.get())).grid(row=7, column=0)
