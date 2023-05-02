@@ -19,3 +19,8 @@ hm.display()
 print("Finished")
 root.mainloop()
 # start("Shanks")
+
+# from analysis import AnalysisModel
+
+# an = AnalysisModel(1, 1, '../cic-collection.parquet')
+# an.performAnalysis()
